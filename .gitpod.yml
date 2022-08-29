@@ -1,7 +1,13 @@
 tasks:
-  - init: pip install dash jupyter-dash pandas
-  - command: python app.py
+  - name: Pip
+    init: >
+      pip install dash jupyter-dash pandas &&
+      gp sync-done pip
 
+  - name: App
+    init: gp sync-await pip
+    command: python app.py
+    
 ports:
   - port: 8050
     onOpen: open-preview
@@ -9,3 +15,5 @@ ports:
 vscode:
   extensions:
     - ms-python.python
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
