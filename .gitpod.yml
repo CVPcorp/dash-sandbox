@@ -6,7 +6,9 @@ tasks:
 
   - name: App
     init: gp sync-await pip
-    command: python app.py
+    command: >
+      gp open app.py &&
+      python app.py
     
 ports:
   - port: 8050
